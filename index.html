@@ -64,10 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-c" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2022/11/02/linux/" class="article-date">
-  <time datetime="2022-11-02T04:36:46.542Z" itemprop="datePublished">2022-11-02</time>
+    <a href="/2022/11/02/c/" class="article-date">
+  <time datetime="2022-11-02T04:54:40.009Z" itemprop="datePublished">2022-11-02</time>
 </a>
     
   </div>
@@ -77,107 +77,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>[toc]</p>
-<h4 id="vi-操作"><a href="#vi-操作" class="headerlink" title="vi 操作"></a>vi 操作</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Debian 不能使用``sudo su 切换超级用户``</span><br><span class="line">Esc模式下   :<span class="built_in">set</span> nu   要删除的行号 12,13d   然后12,13行就删除了</span><br><span class="line">Ctrl+u 删除命令行开始至光标处</span><br><span class="line">Ctrl+k 删除光标至命令行结尾</span><br><span class="line">Ctrl+a 光标移到最前</span><br><span class="line">Ctrl+e 光标移到最后</span><br><span class="line">nx：连续向后删除n个字符</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mmly679/article/details/123279322">vi操作</a></p>
-<h4 id="tar-命令"><a href="#tar-命令" class="headerlink" title="tar 命令"></a>tar 命令</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tar（tape archive的简写）</span></span><br><span class="line">tar　-cvf　生成的tar包名　要打包的文件/目录列表</span><br><span class="line">tar　-xvf　解压包名 -C 解压到指定目录</span><br><span class="line">tar -jcvf　指定生成的压缩文件名　要被压缩的文件/目录列表</span><br><span class="line">tar　-zcvf　指定生成的压缩文件名　要被压缩的文件/目录列表</span><br></pre></td></tr></table></figure>
-<pre><code>-c 建立新的归档文件；
--v 处理过程中输出相关信息；
--f 对普通文件操作；
--x 或--ext\fract或--get：从备份文件中还原文件；
--C &lt;目的目录&gt; 切换到指定的目录；
--j 以bzip2对文件/目录进行压缩；
--z 以gzip对文件/目录进行压缩；
-</code></pre>
-<h4 id="bzip2-zip-gzip"><a href="#bzip2-zip-gzip" class="headerlink" title="bzip2 zip gzip"></a>bzip2 zip gzip</h4><blockquote>
-<p><strong>bzip2　命令参数　指定要压缩的文件</strong><br>-z或——compress：强制执行压缩；<br>-d或——decompress：执行解压缩；<br>-f或-force：bzip2在压缩或解压缩时，若输出文件与现有文件同名，预设不会覆盖现有文件。若要覆盖。请使用此参数；<br>-v或——verbose：压缩或解压缩文件时，显示详细的信息；</p>
-</blockquote>
-<blockquote>
-<p><strong>gzip　命令参数　指定要压缩的文件</strong><br>    -d或–decompress或—-uncompress：解开压缩文件；<br>    -f或——force：强行压缩文件。不理会文件名称或硬连接是否存在以及该文件是否为符号连接；<br>    -l或——list：列出压缩文件的相关信息；<br>    -r或——recursive：递归处理，将指定目录下的所有文件及子目录一并处理；<br>    -v或——verbose：显示指令执行过程；</p>
-</blockquote>
-<blockquote>
-<p><strong>zip　命令参数　指定生成的压缩文件名　要被压缩的文件/目录列表</strong><br>    -d：从压缩文件内删除指定的文件；<br>    -q：不显示指令执行过程；<br>    -r：递归处理，将指定目录下的所有文件和子目录一并处理；<br>    -v：显示指令执行过程或显示版本信息；<br>    -u：更换较新的文件到压缩文件内；<br>    -x&lt;范本样式&gt;：压缩时排除符合条件的文件；</p>
-</blockquote>
-<blockquote>
-<p><strong>.bz2压缩包进行解压</strong><br>bunzip2　命令参数　指定要解压的文件<br>    -f或–force：解压缩时，若输出的文件与现有文件同名时，预设不会覆盖现有的文件；<br>    -k或——keep：在解压缩后，预设会删除原来的压缩文件。若要保留压缩文件，请使用此参数；<br>    -v或——verbose：解压缩文件时，显示详细的信息；</p>
-</blockquote>
-<blockquote>
-<p><strong>.gz压缩包进行解压</strong><br>gunzip　命令参数　指定要解压的文件<br>    -f或-force：强行解开压缩文件，不理会文件名称或硬连接是否存在以及该文件是否为符号连接；<br>    -l或-list：列出压缩文件的相关信息；<br>    -q或-quiet：不显示警告信息；<br>    -r或-recursive：递归处理，将指定目录下的所有文件及子目录一并处理；<br>    -v或-verbose：显示指令执行过程；</p>
-</blockquote>
-<blockquote>
-<p><strong>.zip压缩包</strong><br>unzip　命令参数　指定要解压的文件<br>    -q：执行时不显示任何信息；<br>    -n：解压缩时不要覆盖原有的文件；<br>    -d&lt;目录&gt;：指定文件解压缩后所要存储的目录；</p>
-</blockquote>
-<blockquote>
-<p>gzip   tar　-jxvf　指定要解压的文件<br>使用bunzip2进行解压生成tar包   tar　-zxvf　指定要解压的文件</p>
-</blockquote>
-<h4 id="Linux中使用-useradd-命令来创建一个新用户。"><a href="#Linux中使用-useradd-命令来创建一个新用户。" class="headerlink" title="Linux中使用 useradd 命令来创建一个新用户。"></a>Linux中使用 useradd 命令来创建一个新用户。</h4><blockquote>
-<p>命令格式格式：useradd [命令参数] 参数<br>    常见命令参数：<br>    -d&lt;登入目录&gt;：指定用户登入时的启始目录；<br>    -D：查看或变更预设值；<br>    -g&lt;群组&gt;：指定用户所属的群组；<br>    -m：自动建立用户的登入目录；<br>    -M：不要自动建立用户的登入目录；<br>    -s：指定用户登入后所使用的shell。</p>
-</blockquote>
-<h4 id="Linux用户信息是保存在-etc-passwd文件中"><a href="#Linux用户信息是保存在-etc-passwd文件中" class="headerlink" title="Linux用户信息是保存在/etc/passwd文件中"></a>Linux用户信息是保存在/etc/passwd文件中</h4><blockquote>
-<p>我们可以使用命令tail /etc/passwd查看/etc/passwd文件最后几行中是否存在刚刚新创建的edu用户信息。<br>命令格式：passwd 参数 用户名<br>常见命令参数：<br>-d 删除密码；<br>-l 停止账号使用；<br>-S 显示密码信息</p>
-</blockquote>
-<h4 id="Linux中用户的登录密码是存放在-etc-shadow文件中"><a href="#Linux中用户的登录密码是存放在-etc-shadow文件中" class="headerlink" title="Linux中用户的登录密码是存放在/etc/shadow文件中"></a>Linux中用户的登录密码是存放在/etc/shadow文件中</h4><blockquote>
-<p>/etc/shadow文件中存放的是加密过后的密码，所以在/etc/shadow文件中看到的密码是加密过后的密文</p>
-</blockquote>
-<h4 id="Linux中使用userdel命令来删除一个已经存在的用户。"><a href="#Linux中使用userdel命令来删除一个已经存在的用户。" class="headerlink" title="Linux中使用userdel命令来删除一个已经存在的用户。"></a>Linux中使用userdel命令来删除一个已经存在的用户。</h4><blockquote>
-<p>命令格式：userdel 参数 用户名<br>常见命令参数：<br>-f：强制删除用户，即使用户当前已登录；<br>-r：删除用户的同时，删除与用户相关的所有文件。</p>
-</blockquote>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctrl + a  光标置首行</span><br><span class="line">ctrl + e  光标置尾行</span><br><span class="line">ip address show 显示IP地址</span><br><span class="line">! -number   运行<span class="built_in">history</span> 的第number个命令</span><br><span class="line">输入命令前加个空格将不会保存在<span class="built_in">history</span>中---&gt; 使用 <span class="built_in">echo</span> <span class="variable">$HISTCONTOL</span> 后再使用 HISTCONTOL=ignoreboth</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><p><strong>激活码: MDNAYBEUM</strong></p>
+<h4 id="windos-和-linux-xshell-之间的文件传输"><a href="#windos-和-linux-xshell-之间的文件传输" class="headerlink" title="windos 和 linux(xshell)之间的文件传输"></a>windos 和 linux(xshell)之间的文件传输</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">先安装 :root@ubuntu:/home/slx/rg3<span class="comment"># apt-get install lrzsz</span></span><br><span class="line">输入命令:root@ubuntu:/home/slx/rg3<span class="comment">#  rz</span></span><br><span class="line">查看安装是否成功:root@ubuntu:/home/slx/rg3<span class="comment"># rpm -qa lrzsz</span></span><br></pre></td></tr></table></figure>
 
-<p>wc -lwm 查看文件大小</p>
+<h4 id="apt-命令"><a href="#apt-命令" class="headerlink" title="apt 命令"></a>apt 命令</h4><p>apt 链接:     <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/apt/20109246?fr=aladdin">apt 命令使用</a></p>
+<h4 id="一步编译链接"><a href="#一步编译链接" class="headerlink" title="一步编译链接"></a>一步编译链接</h4><p>预处理 编译 汇编 链接<br> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc testone.c -o hllo</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/02/linux/" data-id="cl9z5dp8y0000l07k1dcwad2o" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/11/02/hello-world/" class="article-date">
-  <time datetime="2022-11-02T00:14:41.376Z" itemprop="datePublished">2022-11-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/11/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/02/hello-world/" data-id="cl9yw7eis0000387k339og8iy" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/02/c/" data-id="cl9z615ku0000lk7kdfgc5c73" class="article-share-link">Share</a>
       
       
     </footer>
@@ -218,11 +127,7 @@
       <ul>
         
           <li>
-            <a href="/2022/11/02/linux/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/02/hello-world/">Hello World</a>
+            <a href="/2022/11/02/c/">(no title)</a>
           </li>
         
       </ul>
