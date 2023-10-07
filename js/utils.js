@@ -1,278 +1,361 @@
-const btf = {
-  debounce: function (func, wait, immediate) {
-    let timeout
-    return function () {
-      const context = this
-      const args = arguments
-      const later = function () {
-        timeout = null
-        if (!immediate) func.apply(context, args)
+/* utils function */
+import { navbarShrink } from "./layouts/navbarShrink.js";
+import { initTOC } from "./layouts/toc.js";
+import { main } from "./main.js";
+import imageViewer from "./tools/imageViewer.js";
+
+export const navigationState = {
+  isNavigating: false,
+};
+
+export default function initUtils() {
+  const utils = {
+    html_root_dom: document.querySelector("html"),
+    pageContainer_dom: document.querySelector(".page-container"),
+    pageTop_dom: document.querySelector(".main-content-header"),
+    homeBanner_dom: document.querySelector(".home-banner-container"),
+    scrollProgressBar_dom: document.querySelector(".scroll-progress-bar"),
+    pjaxProgressBar_dom: document.querySelector(".pjax-progress-bar"),
+    pjaxProgressIcon_dom: document.querySelector(".swup-progress-icon"),
+    backToTopButton_dom: document.querySelector(".tool-scroll-to-top"),
+    toolsList: document.querySelector(".hidden-tools-list"),
+    toggleButton: document.querySelector(".toggle-tools-list"),
+
+    innerHeight: window.innerHeight,
+    pjaxProgressBarTimer: null,
+    prevScrollValue: 0,
+    fontSizeLevel: 0,
+
+    isHasScrollProgressBar: theme.global.scroll_progress.bar === true,
+    isHasScrollPercent: theme.global.scroll_progress.percentage === true,
+
+    // Scroll Style
+    updateScrollStyle() {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+      const percent = this.calculatePercentage(
+        scrollTop,
+        scrollHeight,
+        clientHeight,
+      );
+
+      this.updateScrollProgressBar(percent);
+      this.updateScrollPercent(percent);
+      this.updatePageTopVisibility(scrollTop, clientHeight);
+
+      this.prevScrollValue = scrollTop;
+    },
+
+    updateScrollProgressBar(percent) {
+      if (this.isHasScrollProgressBar) {
+        const progressPercent = percent.toFixed(3);
+        const visibility = percent === 0 ? "hidden" : "visible";
+
+        this.scrollProgressBar_dom.style.visibility = visibility;
+        this.scrollProgressBar_dom.style.width = `${progressPercent}%`;
       }
-      const callNow = immediate && !timeout
-      clearTimeout(timeout)
-      timeout = setTimeout(later, wait)
-      if (callNow) func.apply(context, args)
-    }
-  },
+    },
 
-  throttle: function (func, wait, options) {
-    let timeout, context, args
-    let previous = 0
-    if (!options) options = {}
+    updateScrollPercent(percent) {
+      if (this.isHasScrollPercent) {
+        const percentDom = this.backToTopButton_dom.querySelector(".percent");
+        const showButton = percent !== 0 && percent !== undefined;
 
-    const later = function () {
-      previous = options.leading === false ? 0 : new Date().getTime()
-      timeout = null
-      func.apply(context, args)
-      if (!timeout) context = args = null
-    }
-
-    const throttled = function () {
-      const now = new Date().getTime()
-      if (!previous && options.leading === false) previous = now
-      const remaining = wait - (now - previous)
-      context = this
-      args = arguments
-      if (remaining <= 0 || remaining > wait) {
-        if (timeout) {
-          clearTimeout(timeout)
-          timeout = null
-        }
-        previous = now
-        func.apply(context, args)
-        if (!timeout) context = args = null
-      } else if (!timeout && options.trailing !== false) {
-        timeout = setTimeout(later, remaining)
+        this.backToTopButton_dom.classList.toggle("show", showButton);
+        percentDom.innerHTML = percent.toFixed(0);
       }
-    }
+    },
 
-    return throttled
-  },
+    updatePageTopVisibility(scrollTop, clientHeight) {
+      if (theme.navbar.auto_hide) {
+        const prevScrollValue = this.prevScrollValue;
+        const hidePageTop =
+          prevScrollValue > clientHeight && scrollTop > prevScrollValue;
 
-  sidebarPaddingR: () => {
-    const innerWidth = window.innerWidth
-    const clientWidth = document.body.clientWidth
-    const paddingRight = innerWidth - clientWidth
-    if (innerWidth !== clientWidth) {
-      document.body.style.paddingRight = paddingRight + 'px'
-    }
-  },
-
-  snackbarShow: (text, showAction = false, duration = 2000) => {
-    const { position, bgLight, bgDark } = GLOBAL_CONFIG.Snackbar
-    const bg = document.documentElement.getAttribute('data-theme') === 'light' ? bgLight : bgDark
-    Snackbar.show({
-      text: text,
-      backgroundColor: bg,
-      showAction: showAction,
-      duration: duration,
-      pos: position,
-      customClass: 'snackbar-css'
-    })
-  },
-
-  diffDate: (d, more = false) => {
-    const dateNow = new Date()
-    const datePost = new Date(d)
-    const dateDiff = dateNow.getTime() - datePost.getTime()
-    const minute = 1000 * 60
-    const hour = minute * 60
-    const day = hour * 24
-    const month = day * 30
-
-    let result
-    if (more) {
-      const monthCount = dateDiff / month
-      const dayCount = dateDiff / day
-      const hourCount = dateDiff / hour
-      const minuteCount = dateDiff / minute
-
-      if (monthCount > 12) {
-        result = datePost.toLocaleDateString().replace(/\//g, '-')
-      } else if (monthCount >= 1) {
-        result = parseInt(monthCount) + ' ' + GLOBAL_CONFIG.date_suffix.month
-      } else if (dayCount >= 1) {
-        result = parseInt(dayCount) + ' ' + GLOBAL_CONFIG.date_suffix.day
-      } else if (hourCount >= 1) {
-        result = parseInt(hourCount) + ' ' + GLOBAL_CONFIG.date_suffix.hour
-      } else if (minuteCount >= 1) {
-        result = parseInt(minuteCount) + ' ' + GLOBAL_CONFIG.date_suffix.min
+        this.pageTop_dom.classList.toggle("hide", hidePageTop);
       } else {
-        result = GLOBAL_CONFIG.date_suffix.just
+        this.pageTop_dom.classList.remove("hide");
       }
-    } else {
-      result = parseInt(dateDiff / day)
-    }
-    return result
-  },
+    },
 
-  loadComment: (dom, callback) => {
-    if ('IntersectionObserver' in window) {
-      const observerItem = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          callback()
-          observerItem.disconnect()
-        }
-      }, { threshold: [0] })
-      observerItem.observe(dom)
-    } else {
-      callback()
-    }
-  },
+    calculatePercentage(scrollTop, scrollHeight, clientHeight) {
+      return Math.round((scrollTop / (scrollHeight - clientHeight)) * 100);
+    },
 
-  scrollToDest: (pos, time = 500) => {
-    const currentPos = window.pageYOffset
-    if (currentPos > pos) pos = pos - 70
+    // register window scroll event
+    registerWindowScroll() {
+      window.addEventListener("scroll", () => {
+        this.updateScrollStyle();
+        this.updateTOCScroll();
+        this.updateNavbarShrink();
+        this.updateHomeBannerBlur();
+        this.updateAutoHideTools();
+        this.updateAPlayerAutoHide();
+      });
+    },
 
-    if ('scrollBehavior' in document.documentElement.style) {
-      window.scrollTo({
-        top: pos,
-        behavior: 'smooth'
-      })
-      return
-    }
-
-    let start = null
-    pos = +pos
-    window.requestAnimationFrame(function step (currentTime) {
-      start = !start ? currentTime : start
-      const progress = currentTime - start
-      if (currentPos < pos) {
-        window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos)
-      } else {
-        window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time))
+    updateTOCScroll() {
+      if (
+        theme.articles.toc.enable &&
+        initTOC().hasOwnProperty("updateActiveTOCLink")
+      ) {
+        initTOC().updateActiveTOCLink();
       }
-      if (progress < time) {
-        window.requestAnimationFrame(step)
-      } else {
-        window.scrollTo(0, pos)
+    },
+
+    updateNavbarShrink() {
+      if (!navigationState.isNavigating) {
+        navbarShrink.init();
       }
-    })
-  },
+    },
 
-  animateIn: (ele, text) => {
-    ele.style.display = 'block'
-    ele.style.animation = text
-  },
+    updateHomeBannerBlur() {
+      if (
+        theme.home_banner.style === "fixed" &&
+        location.pathname === config.root
+      ) {
+        const blurElement = document.querySelector(".home-banner-background");
+        const viewHeight = window.innerHeight;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const triggerViewHeight = viewHeight / 2;
+        const blurValue = scrollY >= triggerViewHeight ? 15 : 0;
 
-  animateOut: (ele, text) => {
-    ele.addEventListener('animationend', function f () {
-      ele.style.display = ''
-      ele.style.animation = ''
-      ele.removeEventListener('animationend', f)
-    })
-    ele.style.animation = text
-  },
-
-  getParents: (elem, selector) => {
-    for (; elem && elem !== document; elem = elem.parentNode) {
-      if (elem.matches(selector)) return elem
-    }
-    return null
-  },
-
-  siblings: (ele, selector) => {
-    return [...ele.parentNode.children].filter((child) => {
-      if (selector) {
-        return child !== ele && child.matches(selector)
+        try {
+          blurElement.style.transition = "0.3s";
+          blurElement.style.webkitFilter = `blur(${blurValue}px)`;
+        } catch (e) {}
       }
-      return child !== ele
-    })
-  },
+    },
 
-  /**
-   * @param {*} selector
-   * @param {*} eleType the type of create element
-   * @param {*} options object key: value
-   */
-  wrap: (selector, eleType, options) => {
-    const creatEle = document.createElement(eleType)
-    for (const [key, value] of Object.entries(options)) {
-      creatEle.setAttribute(key, value)
-    }
-    selector.parentNode.insertBefore(creatEle, selector)
-    creatEle.appendChild(selector)
-  },
+    updateAutoHideTools() {
+      const y = window.pageYOffset;
+      const height = document.body.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const toolList = document.getElementsByClassName(
+        "right-side-tools-container",
+      );
 
-  unwrap: el => {
-    const elParentNode = el.parentNode
-    if (elParentNode !== document.body) {
-      elParentNode.parentNode.insertBefore(el, elParentNode)
-      elParentNode.parentNode.removeChild(elParentNode)
-    }
-  },
-
-  isHidden: ele => ele.offsetHeight === 0 && ele.offsetWidth === 0,
-
-  getEleTop: ele => {
-    let actualTop = ele.offsetTop
-    let current = ele.offsetParent
-
-    while (current !== null) {
-      actualTop += current.offsetTop
-      current = current.offsetParent
-    }
-
-    return actualTop
-  },
-
-  loadLightbox: ele => {
-    const service = GLOBAL_CONFIG.lightbox
-
-    if (service === 'mediumZoom') {
-      const zoom = mediumZoom(ele)
-      zoom.on('open', e => {
-        const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
-        zoom.update({
-          background: photoBg
-        })
-      })
-    }
-
-    if (service === 'fancybox') {
-      ele.forEach(i => {
-        if (i.parentNode.tagName !== 'A') {
-          const dataSrc = i.dataset.lazySrc || i.src
-          const dataCaption = i.title || i.alt || ''
-          btf.wrap(i, 'a', { href: dataSrc, 'data-fancybox': 'gallery', 'data-caption': dataCaption, 'data-thumb': dataSrc })
-        }
-      })
-
-      if (!window.fancyboxRun) {
-        Fancybox.bind('[data-fancybox]', {
-          Hash: false,
-          Thumbs: {
-            autoStart: false
+      for (let i = 0; i < toolList.length; i++) {
+        const tools = toolList[i];
+        if (y <= 0) {
+          if (location.pathname !== "/") {
+            //console.log(location.pathname)
+          } else {
+            tools.classList.add("hide");
           }
-        })
-        window.fancyboxRun = true
+        } else if (y + windowHeight >= height - 20) {
+          tools.classList.add("hide");
+        } else {
+          tools.classList.remove("hide");
+        }
       }
-    }
-  },
+    },
 
-  initJustifiedGallery: function (selector) {
-    selector.forEach(function (i) {
-      if (!btf.isHidden(i)) {
-        fjGallery(i, {
-          itemSelector: '.fj-gallery-item',
-          rowHeight: 220,
-          gutter: 4,
-          onJustify: function () {
-            this.$container.style.opacity = '1'
+    updateAPlayerAutoHide() {
+      const aplayer = document.getElementById("aplayer");
+      if (aplayer == null) {
+      } else {
+        const y = window.pageYOffset;
+        const height = document.body.scrollHeight;
+        const windowHeight = window.innerHeight;
+        if (y <= 0) {
+          if (location.pathname !== "/") {
+            //console.log(location.pathname)
+          } else {
+            aplayer.classList.add("hide");
           }
-        })
+        } else if (y + windowHeight >= height - 20) {
+          aplayer.classList.add("hide");
+        } else {
+          aplayer.classList.remove("hide");
+        }
       }
-    })
-  },
+    },
 
-  updateAnchor: (anchor) => {
-    if (anchor !== window.location.hash) {
-      if (!anchor) anchor = location.pathname
-      const title = GLOBAL_CONFIG_SITE.title
-      window.history.replaceState({
-        url: location.href,
-        title: title
-      }, title, anchor)
-    }
-  }
+    toggleToolsList() {
+      this.toggleButton.addEventListener("click", () => {
+        this.toolsList.classList.toggle("show");
+      });
+    },
+
+    globalFontSizeAdjust() {
+      const htmlRoot = this.html_root_dom;
+      const fontAdjustPlus = document.querySelector(".tool-font-adjust-plus");
+      const fontAdjustMinus = document.querySelector(".tool-font-adjust-minus");
+
+      const fontSize = document.defaultView.getComputedStyle(
+        document.body,
+      ).fontSize;
+      const baseFontSize = parseFloat(fontSize);
+
+      let fontSizeLevel = 0;
+      const styleStatus = main.getStyleStatus();
+      if (styleStatus) {
+        fontSizeLevel = styleStatus.fontSizeLevel;
+        setFontSize(fontSizeLevel);
+      }
+
+      function setFontSize(level) {
+        const fontSize = baseFontSize * (1 + level * 0.05);
+        htmlRoot.style.fontSize = `${fontSize}px`;
+        main.styleStatus.fontSizeLevel = level;
+        main.setStyleStatus();
+      }
+
+      function increaseFontSize() {
+        fontSizeLevel = Math.min(fontSizeLevel + 1, 5);
+        setFontSize(fontSizeLevel);
+      }
+
+      function decreaseFontSize() {
+        fontSizeLevel = Math.max(fontSizeLevel - 1, 0);
+        setFontSize(fontSizeLevel);
+      }
+
+      fontAdjustPlus.addEventListener("click", increaseFontSize);
+      fontAdjustMinus.addEventListener("click", decreaseFontSize);
+    },
+    // go comment anchor
+    goComment() {
+      this.goComment_dom = document.querySelector(".go-comment");
+      if (this.goComment_dom) {
+        this.goComment_dom.addEventListener("click", () => {
+          const target = document.querySelector("#comment-anchor");
+          if (target) {
+            const offset = target.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+              top: offset,
+              behavior: "smooth",
+            });
+          }
+        });
+      }
+    },
+
+    // get dom element height
+    getElementHeight(selectors) {
+      const dom = document.querySelector(selectors);
+      return dom ? dom.getBoundingClientRect().height : 0;
+    },
+
+    // init first screen height
+    inithomeBannerHeight() {
+      this.homeBanner_dom &&
+        (this.homeBanner_dom.style.height = this.innerHeight + "px");
+    },
+
+    // init page height handle
+    initPageHeightHandle() {
+      if (this.homeBanner_dom) return;
+      const temp_h1 = this.getElementHeight(".main-content-header");
+      const temp_h2 = this.getElementHeight(".main-content-body");
+      const temp_h3 = this.getElementHeight(".main-content-footer");
+      const allDomHeight = temp_h1 + temp_h2 + temp_h3;
+      const innerHeight = window.innerHeight;
+      const pb_dom = document.querySelector(".main-content-footer");
+      if (allDomHeight < innerHeight) {
+        const marginTopValue = Math.floor(innerHeight - allDomHeight);
+        if (marginTopValue > 0) {
+          pb_dom.style.marginTop = `${marginTopValue - 2}px`;
+        }
+      }
+    },
+
+    // big image viewer
+
+    // set how long ago language
+    setHowLongAgoLanguage(p1, p2) {
+      return p2.replace(/%s/g, p1);
+    },
+
+    getHowLongAgo(timestamp) {
+      const l = lang_ago;
+
+      const __Y = Math.floor(timestamp / (60 * 60 * 24 * 30) / 12);
+      const __M = Math.floor(timestamp / (60 * 60 * 24 * 30));
+      const __W = Math.floor(timestamp / (60 * 60 * 24) / 7);
+      const __d = Math.floor(timestamp / (60 * 60 * 24));
+      const __h = Math.floor((timestamp / (60 * 60)) % 24);
+      const __m = Math.floor((timestamp / 60) % 60);
+      const __s = Math.floor(timestamp % 60);
+
+      if (__Y > 0) {
+        return this.setHowLongAgoLanguage(__Y, l.year);
+      } else if (__M > 0) {
+        return this.setHowLongAgoLanguage(__M, l.month);
+      } else if (__W > 0) {
+        return this.setHowLongAgoLanguage(__W, l.week);
+      } else if (__d > 0) {
+        return this.setHowLongAgoLanguage(__d, l.day);
+      } else if (__h > 0) {
+        return this.setHowLongAgoLanguage(__h, l.hour);
+      } else if (__m > 0) {
+        return this.setHowLongAgoLanguage(__m, l.minute);
+      } else if (__s > 0) {
+        return this.setHowLongAgoLanguage(__s, l.second);
+      }
+    },
+
+    relativeTimeInHome() {
+      const post = document.querySelectorAll(
+        ".home-article-meta-info .home-article-date",
+      );
+      const df = theme.home.article_date_format;
+      if (df === "relative") {
+        post &&
+          post.forEach((v) => {
+            const nowDate = Date.now();
+            const postDate = new Date(
+              v.dataset.date.split(" GMT")[0],
+            ).getTime();
+            v.innerHTML = this.getHowLongAgo(
+              Math.floor((nowDate - postDate) / 1000),
+            );
+          });
+      } else if (df === "auto") {
+        post &&
+          post.forEach((v) => {
+            const nowDate = Date.now();
+            const postDate = new Date(
+              v.dataset.date.split(" GMT")[0],
+            ).getTime();
+            const finalDays = Math.floor(
+              (nowDate - postDate) / (60 * 60 * 24 * 1000),
+            );
+            if (finalDays < 7) {
+              v.innerHTML = this.getHowLongAgo(
+                Math.floor((nowDate - postDate) / 1000),
+              );
+            }
+          });
+      }
+    },
+  };
+
+  // init scroll
+  utils.registerWindowScroll();
+
+  // toggle show tools list
+  utils.toggleToolsList();
+
+  // main font adjust
+  utils.globalFontSizeAdjust();
+
+  // go comment
+  utils.goComment();
+
+  // init page height handle
+  utils.initPageHeightHandle();
+
+  // init first screen height
+  utils.inithomeBannerHeight();
+
+  // set how long ago in home article block
+  utils.relativeTimeInHome();
+
+  // image viewer handle
+  imageViewer();
 }
