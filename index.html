@@ -64,6 +64,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-conda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/10/07/conda/" class="article-date">
+  <time datetime="2023-10-07T12:15:23.400Z" itemprop="datePublished">2023-10-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/07/conda/">Anaconda常用操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Anaconda-命令"><a href="#Anaconda-命令" class="headerlink" title="Anaconda 命令"></a>Anaconda 命令</h1><h2 id="创建新环境"><a href="#创建新环境" class="headerlink" title="创建新环境"></a>创建新环境</h2><p><code>conda create --name &lt;environment_name&gt; python==&lt;version&gt;</code></p>
+<h2 id="激活环境"><a href="#激活环境" class="headerlink" title="激活环境"></a>激活环境</h2><ol>
+<li><p>对于 windos 系统<br><code>conda activate &lt;环境名称&gt;</code></p>
+</li>
+<li><p>对于 Mac 和 Linux 系统<br><code>source activate &lt;环境名称&gt;</code></p>
+</li>
+</ol>
+<h2 id="退出环境"><a href="#退出环境" class="headerlink" title="退出环境"></a>退出环境</h2><ol>
+<li><p>对于 windos 系统:<br><code>conda deactivate</code></p>
+</li>
+<li><p>对于 Mac 和 Linux 系统:<br><code>source deactivate</code></p>
+</li>
+</ol>
+<h2 id="删除环境"><a href="#删除环境" class="headerlink" title="删除环境"></a>删除环境</h2><ul>
+<li>要删除一个已经存在的 conda 环境，可以使用以下命令：<br><code>conda remove --name &lt;环境名称&gt; --all</code></li>
+</ul>
+<h2 id="复制环境"><a href="#复制环境" class="headerlink" title="复制环境"></a>复制环境</h2><ul>
+<li>要复制一个已经存在的 conda 环境<br><code>conda create --name &lt;新环境名称&gt; --clone &lt;源环境名称&gt;</code></li>
+</ul>
+<h2 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h2><p><code>conda info</code><br><code>conda -V</code><br><code>conda search package_name</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://starrylsi.top/2023/10/07/conda/" data-id="clng02ywo0000ug7kcg3x29x0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-threading" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/09/25/threading/" class="article-date">
@@ -675,7 +731,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a></li></ul>
     </div>
   </div>
 
@@ -686,6 +742,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/10/07/conda/">Anaconda常用操作</a>
+          </li>
         
           <li>
             <a href="/2023/09/25/threading/">线程和进程</a>
@@ -701,10 +761,6 @@
         
           <li>
             <a href="/2023/05/27/windows%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/">SSH 连接远程服务器</a>
-          </li>
-        
-          <li>
-            <a href="/2023/05/27/fileSystem/">文件系统</a>
           </li>
         
       </ul>
