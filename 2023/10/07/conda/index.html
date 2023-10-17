@@ -18,15 +18,15 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Anaconda 命令创建新环境 默认路径下conda create --name &lt;environment_name&gt; python&#x3D;&#x3D;&lt;version&gt;  指定路径下创建环境conda create --prefix&#x3D;&lt;路径&gt; python&#x3D;&#x3D;&lt;version&gt;   激活环境 对于 windos 系统conda activate &lt;环境名称">
+        <meta name="description" content="创建新环境 默认路径下conda create --name &lt;environment_name&gt; python&#x3D;&#x3D;&lt;version&gt;  指定路径下创建环境conda create --prefix&#x3D;&lt;路径&gt; python&#x3D;&#x3D;&lt;version&gt;   激活环境 对于 windos 系统conda activate &lt;环境名称&gt;  对于 Ma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Anaconda常用操作">
 <meta property="og:url" content="http://starrylsi.top/2023/10/07/conda/index.html">
 <meta property="og:site_name" content="starrylsi.top">
-<meta property="og:description" content="Anaconda 命令创建新环境 默认路径下conda create --name &lt;environment_name&gt; python&#x3D;&#x3D;&lt;version&gt;  指定路径下创建环境conda create --prefix&#x3D;&lt;路径&gt; python&#x3D;&#x3D;&lt;version&gt;   激活环境 对于 windos 系统conda activate &lt;环境名称">
+<meta property="og:description" content="创建新环境 默认路径下conda create --name &lt;environment_name&gt; python&#x3D;&#x3D;&lt;version&gt;  指定路径下创建环境conda create --prefix&#x3D;&lt;路径&gt; python&#x3D;&#x3D;&lt;version&gt;   激活环境 对于 windos 系统conda activate &lt;环境名称&gt;  对于 Ma">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-07T12:15:23.400Z">
-<meta property="article:modified_time" content="2023-10-17T01:56:45.721Z">
+<meta property="article:modified_time" content="2023-10-17T12:06:48.046Z">
 <meta property="article:author" content="一闪一闪亮晶晶">
 <meta name="twitter:card" content="summary">
     
@@ -236,8 +236,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-10-17 09:56:45</span>
-            <span class="mobile">2023-10-17 09:56:45</span>
+            <span class="desktop">2023-10-17 20:06:48</span>
+            <span class="mobile">2023-10-17 20:06:48</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -264,7 +264,7 @@
 
 
         <div class="article-content markdown-body">
-            <h3 id="Anaconda-命令"><a href="#Anaconda-命令" class="headerlink" title="Anaconda 命令"></a>Anaconda 命令</h3><h4 id="创建新环境"><a href="#创建新环境" class="headerlink" title="创建新环境"></a>创建新环境</h4><ul>
+            <h4 id="创建新环境"><a href="#创建新环境" class="headerlink" title="创建新环境"></a>创建新环境</h4><ul>
 <li><p>默认路径下<br><code>conda create --name &lt;environment_name&gt; python==&lt;version&gt;</code></p>
 </li>
 <li><p>指定路径下创建环境<br><code>conda create --prefix=&lt;路径&gt; python==&lt;version&gt;</code></p>
@@ -339,6 +339,20 @@
 <td><code>A:\software\Anaconda\Library\bin</code></td>
 </tr>
 </tbody></table>
+<h4 id="修改默认缓存位置"><a href="#修改默认缓存位置" class="headerlink" title="修改默认缓存位置"></a>修改默认缓存位置</h4><ol>
+<li>1 查看当前有哪些路径</li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#简单查询</span><br><span class="line">conda info</span><br><span class="line">#或者用这句能够直接看到 key：</span><br><span class="line">conda config --show</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>2 添加、删除 envs_dirs</li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#dir是路径</span><br><span class="line">conda config --add envs_dirs dir</span><br><span class="line">conda config --remove envs_dirs dir</span><br><span class="line">#remove只能删除自己添加的路径，系统默认的就会报错</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>第二种方法是进入 C:\Users\admin 修改.condarc 文件（默认隐藏的），末尾添加</li>
+</ol>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">envs directories :</span><br><span class="line">  - D:\Anaconda3\envs</span><br></pre></td></tr></table></figure></div>
 
         </div>
 
@@ -353,7 +367,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-10-17 09:56:45
+                    :</strong> 2023-10-17 20:06:48
             </li>
         
         <li>
@@ -454,7 +468,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">Anaconda常用操作</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Anaconda-%E5%91%BD%E4%BB%A4"><span class="nav-text">Anaconda 命令</span></a></li></ol>
+        
 
     </div>
 </div>
