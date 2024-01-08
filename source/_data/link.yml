@@ -1,0 +1,16 @@
+- class_name: 推荐博客
+  flink_style: flexcard
+  link_list:
+    - name: 安知鱼`Blog
+      link: https://anzhiy.cn/
+      avatar: https://image.anzhiy.cn/adminuploads/1/2022/09/15/63232b7d91d22.jpg
+      descr: 生活明朗，万物可爱
+      siteshot: https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/anzhiy.cn.jpg
+- class_name: 推荐博客
+  flink_style: flexcard
+  link_list:
+    - name: voilone`Blog
+      link: https://www.voiblog.top
+      avatar: https://pic.voiblog.top/i/2022/10/08/63411498e4c27.jpg
+      descr: 这个人很懒
+      siteshot: https://pic.voiblog.top/others/2022/11/04/636467c323a82_2.png
