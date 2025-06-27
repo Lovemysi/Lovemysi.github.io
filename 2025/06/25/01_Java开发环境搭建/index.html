@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.31.0" theme-name="Stellar" theme-version="1.31.0">
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,24 +17,27 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>归档 - starrylsi</title>
+  <title>Java开发环境搭建 - starrylsi</title>
 
   
-    <meta name="description" content="成为很厉害的程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://lovemysi.github.io/archives/2025/index.html">
+    <meta name="description" content="快速熟悉Java环境的搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java开发环境搭建">
+<meta property="og:url" content="https://lovemysi.github.io/2025/06/25/01_Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="starrylsi">
-<meta property="og:description" content="成为很厉害的程序员">
+<meta property="og:description" content="快速熟悉Java环境的搭建">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.starrylsi.top/img/2025/06/27/685e649852896.jpg">
+<meta property="article:published_time" content="2025-06-25T09:16:11.321Z">
+<meta property="article:modified_time" content="2025-06-27T09:02:00.953Z">
 <meta property="article:author" content="starrylsi">
-<meta name="twitter:card" content="summary">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic.starrylsi.top/img/2025/06/27/685e649852896.jpg">
   
   
   
-  
+  <meta name="keywords" content="Java">
 
   <!-- feed -->
   
@@ -50,7 +53,7 @@
 </head>
 <body>
 
-<div class="l_body index" id="start" layout="undefined" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic.starrylsi.top/img/2025/06/27/685e649852896.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">starrylsi</div><div class="sub normal cap">无为而无不为</div><div class="sub hover cap" style="opacity:0"> 出自道德经</div></a></div></header>
@@ -62,21 +65,245 @@
 <nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="项目" href="/project/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/06/25/01_Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><span class="title">Java开发环境搭建</span></a></div></widget>
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/xaoxuu/assets.xaoxuu.com/placeholder/social/08a41b181ce68.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/xaoxuu/assets.xaoxuu.com/placeholder/social/3845874.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/xaoxuu/assets.xaoxuu.com/placeholder/social/3616429.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/xaoxuu/assets.xaoxuu.com/placeholder/social/942ebbf1a4b91.svg"/></a></div></footer>
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic.starrylsi.top/img/2025/06/27/685e649852896.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">starrylsi</div><div class="sub normal cap">无为而无不为</div><div class="sub hover cap" style="opacity:0"> 出自道德经</div></a></div></header>
-
- 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a class="active" href="/archives/">归档</a></nav></div></div></div><div class="post-list archives"><article class="" id="archive"><div class='archive-header h4'>2025</div><div class="archive-list"><a class='post fs14' href="/2025/06/25/01_Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><time>06-25</time><span>Java开发环境搭建</span></a></div></article></div>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Java%E5%85%A8%E6%A0%88/">Java全栈</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/Java%E5%85%A8%E6%A0%88/Java%E5%9F%BA%E7%A1%80/">Java基础</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-06-25T09:16:11.321Z">2025-06-25</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-06-27T09:02:00.953Z">2025-06-27</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span> </span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="第一章-Java-开发环境搭建"><a href="#第一章-Java-开发环境搭建" class="headerlink" title="第一章 Java 开发环境搭建"></a>第一章 Java 开发环境搭建</h2><h3 id="常用的-windows-组合键"><a href="#常用的-windows-组合键" class="headerlink" title="常用的 windows 组合键"></a>常用的 windows 组合键</h3><ul>
+<li>win + D<ul>
+<li>回到桌面</li>
+</ul>
+</li>
+<li>win + E<ul>
+<li>打开资源管理器</li>
+</ul>
+</li>
+<li>win + R<ul>
+<li>打开运行窗口</li>
+</ul>
+</li>
+<li>win + L<ul>
+<li>锁屏</li>
+</ul>
+</li>
+<li>alt + tab<ul>
+<li>应用之间的切换</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用的-DOS-命令"><a href="#常用的-DOS-命令" class="headerlink" title="常用的 DOS 命令"></a>常用的 DOS 命令</h3><ul>
+<li><p>打开 DOS 命令窗口</p>
+<ul>
+<li>win + R，输入 cmd</li>
+<li>cmd 是 commond 单词的缩写。</li>
+</ul>
+</li>
+<li><p>怎么在 DOS 命令窗口中完成复制和粘贴？？？？</p>
+</li>
+<li><p>什么是当前路径？假设进入 DOS 命令窗口时显示的是：C:\Users\Administrator&gt;。那么当前路径就是：C:\Users\Administrator</p>
+</li>
+<li><p>常用 DOS 命令：</p>
+<ul>
+<li>dir：列出当前路径下所有的文件以及目录。</li>
+<li>cls：clear screen 清屏。</li>
+<li>exit：退出 DOS 命令窗口。</li>
+<li>切换盘符：c: 或者 d: 或者 e:</li>
+<li>del：删除一个文件或者多个文件。del Test.java del *.java</li>
+<li>ipconfig 以及 ipconfig &#x2F;all：查看网卡的相关信息，例如 ip 地址，mac 地址等。</li>
+<li>ping 命令：查看两台计算机之间是否可以正常通信<ul>
+<li>ping 192.168.137.101</li>
+<li>ping 192.168.137.101 -t</li>
+<li>ping <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></li>
+<li>ping <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> -t</li>
+<li>终止 DOS 命令窗口中某个命令的执行：ctrl + c</li>
+</ul>
+</li>
+<li>mkdir：创建目录<ul>
+<li>mkdir abc，表示在当前目录下新建一个目录：abc</li>
+</ul>
+</li>
+<li>rd：删除目录<ul>
+<li>rd abc，表示删除当前路径下的 abc 目录</li>
+</ul>
+</li>
+<li>ren：重命名<ul>
+<li>ren abc xyz，表示将当前路径下的 abc 目录名修改为 xyz</li>
+</ul>
+</li>
+<li>cd 命令：<ul>
+<li>作用是：切换目录。change directory</li>
+<li>cd 命令的用法：cd 路径</li>
+<li>路径包括：<ul>
+<li>相对路径：相对路径一定是相对于当前路径而言的，以当前路径为基准，从当前所在的位置开始找。</li>
+<li>绝对路径：在 windows 当中，路径开始的时候，是以盘符开始的，都是绝对路径。例如：C:\Users\Administrator\xyz\abc\def</li>
+</ul>
+</li>
+<li>cd .. 回到上级目录 （在 windows 系统中两个点.. 代表的是一个上级目录。扩展：其实还有一个路径叫做一个点 . 一个点代表的是当前路径。）</li>
+<li>cd &#x2F; 回到跟目录</li>
+<li>注意：路径在 windows 当中自动补全：使用 tab 键。</li>
+</ul>
+</li>
+<li>定时关机：<ul>
+<li>shutdown -s -t 3600 一小时之后自动关机。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>批处理文件</p>
+<ul>
+<li>my.bat 文件</li>
+</ul>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\Users\Administrator\xyz\abc\def</span><br><span class="line"><span class="function">c:</span></span><br><span class="line"><span class="function"><span class="title">del</span> *.<span class="title">java</span></span></span><br></pre></td></tr></table></figure>
+
+<p>作用：切换到 C:\Users\Administrator\xyz\abc\def 目录下，删除这个目录中所有的 java 文件。</p>
+</li>
+</ul>
+<h3 id="通用的文本编辑快捷键"><a href="#通用的文本编辑快捷键" class="headerlink" title="通用的文本编辑快捷键"></a>通用的文本编辑快捷键</h3><p>ctrl+c 复制</p>
+<p>ctrl+v 粘贴</p>
+<p>ctrl+x 剪切</p>
+<p>ctrl+s 保存</p>
+<p>ctrl+z 撤销</p>
+<p>ctrl+y 重做</p>
+<p>ctrl+a 全选</p>
+<p>home 光标回到行首</p>
+<p>end 光标回到行尾</p>
+<p>ctrl + home 光标回到文章开始</p>
+<p>ctrl + end 光标回到文章末尾</p>
+<p>shift + home 或 end 选中一行</p>
+<p>鼠标双击 （选中一个单词）</p>
+<p>ctrl + shift + 右箭头或左箭头 （选中一个单词）</p>
+<p>ctrl + f 查找</p>
+<h3 id="PATH-环境变量"><a href="#PATH-环境变量" class="headerlink" title="PATH 环境变量"></a>PATH 环境变量</h3><ul>
+<li>path 环境变量不是 java 的，隶属于 windows 操作系统</li>
+<li>path 环境变量的作用是什么？<ul>
+<li>在 path 中有很多路径，路径和路径之间采用 分号 隔开</li>
+<li>在 DOS 命令窗口中输入一个 DOS 命令之后，windows 会先从当前路径下找这个命令，如果找不到，则会去环境变量 PATH 的路径中查找该命令，找到则执行，找不到，则报错。</li>
+<li>PATH 环境变量实际上就是给 windows 操作系统指路的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="编写第一个-Java-程序"><a href="#编写第一个-Java-程序" class="headerlink" title="编写第一个 Java 程序"></a>编写第一个 Java 程序</h3><p>在硬盘的任何位置，新建一个 java 源文件，起名：HelloWorld.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="编译第一个-java-程序"><a href="#编译第一个-java-程序" class="headerlink" title="编译第一个 java 程序"></a>编译第一个 java 程序</h3><ul>
+<li>使用 javac 命令来编译。首先确保 javac 命令能用。</li>
+<li>javac 命令怎么用，语法是什么？<ul>
+<li>javac java 源文件的路径</li>
+<li>javac java 源文件的相对路径</li>
+<li>javac java 源文件的绝对路径</li>
+</ul>
+</li>
+</ul>
+<h3 id="运行第一个-Java-程序"><a href="#运行第一个-Java-程序" class="headerlink" title="运行第一个 Java 程序"></a>运行第一个 Java 程序</h3><ul>
+<li><p>使用 java 命令来运行程序，首先确保 java 命令可以用。</p>
+</li>
+<li><p>java 命令怎么用？语法格式是什么？</p>
+<ul>
+<li>java 类名</li>
+<li>切记切记切记~！！！！！！！！！ java 命令后面跟的<strong>不是文件路径</strong>。java 命令后面跟的是<font size=5>类名</font></li>
+</ul>
+</li>
+<li><p>什么是类名？</p>
+<ul>
+<li>A.class，类名是 A</li>
+<li>HelloWorld.class，类名是 HelloWorld</li>
+<li>Test.class，类名是：Test</li>
+</ul>
+</li>
+<li><p><font color=red>这里先死记硬背，后面就明白了。要使用 java 命令，首先 DOS 命令窗口中的当前路径必须切换到 class 文件所在的位置。</font></p>
+</li>
+</ul>
+<h3 id="掌握环境变量-CLASSPATH"><a href="#掌握环境变量-CLASSPATH" class="headerlink" title="掌握环境变量 CLASSPATH"></a>掌握环境变量 CLASSPATH</h3><ul>
+<li>classpath 环境变量是隶属于 Java 语言的。不是 windows 操作系统的。和 PATH 环境变量完全不同。</li>
+<li>classpath 环境变量是给 classloader（类加载器）指路的。</li>
+<li>java A。执行后。先启动 JVM，JVM 启动 classloader，classloader 去硬盘上通过 classpath 找 A.class 文件。找到则执行，找不到则报错。</li>
+<li>如果 classpath 没有配置的话，默认从当前路径下找 class 字节码文件。</li>
+<li>如果 classpath 配置了，例如配置到桌面上了：C:\Users\Administrator\Desktop，那么 classloader 以后就只会去桌面上找字节码文件了，不再从当前路径下找了。</li>
+<li>注意，如果 classpath 配置为：classpath&#x3D;.;C:\Users\Administrator\Desktop 是什么意思呢？<ul>
+<li>先让类加载器从当前路径下找，如果找不到的话，去 C:\Users\Administrator\Desktop 找。</li>
+</ul>
+</li>
+<li>但是对于目前来说，我们还没有必要这样配置。所以目前 classpath 大家是可以不配置的。</li>
+</ul>
+<h3 id="关于编译时的乱码问题"><a href="#关于编译时的乱码问题" class="headerlink" title="关于编译时的乱码问题"></a>关于编译时的乱码问题</h3><ul>
+<li>当 java 源文件中有中文时，采用老杜给的 editplus 工具写代码，最后会出现中文乱码问题，为什么？<ul>
+<li>editplus 默认是简体中文 GBK。</li>
+<li>java21 的 javac 编译器采用的是 UTF-8 的编码方式进行编译。</li>
+<li>编码不一致，所以乱码了。</li>
+</ul>
+</li>
+<li>怎么解决？<ul>
+<li>第一种方案：<ul>
+<li>javac -encoding GBK HelloWorld2.java</li>
+</ul>
+</li>
+<li>第二种方案：<ul>
+<li>将 editplus 的字符集修改为 UTF-8</li>
+</ul>
+</li>
+<li>不管哪一种解决方案，都是让两边的字符编码方式一致。</li>
+</ul>
+</li>
+</ul>
+<h3 id="java-中的三种注释"><a href="#java-中的三种注释" class="headerlink" title="java 中的三种注释"></a>java 中的三种注释</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单行注释</span></span><br><span class="line"><span class="comment">// 单行注释</span></span><br><span class="line"><span class="comment">// 单行注释</span></span><br><span class="line"><span class="comment">// 单行注释</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	多行注释</span></span><br><span class="line"><span class="comment">	多行注释</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* javadoc注释，可以给javadoc命令解析提取并生成帮助文档</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> dujubin</span></span><br><span class="line"><span class="comment">* <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment">* <span class="doctag">@since</span> 1.0</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>使用以下命令可以提取生成帮助文档：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javadoc -d docs -author -version -encoding utf-8 HelloWorld.java</span><br></pre></td></tr></table></figure>
+
+<h3 id="public-class-与-class-的区别"><a href="#public-class-与-class-的区别" class="headerlink" title="public class 与 class 的区别"></a>public class 与 class 的区别</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 一个Java源文件中可以定义多个class</span><br><span class="line">2. 编译之后，一个class就会对应生成一个class字节码文件</span><br><span class="line">3. 如果一个类是public的，类名必须和源文件名保持一致。</span><br><span class="line">4. public的类可以没有。如果有的话，也只能有一个。</span><br><span class="line">5. 每个类中都可以编写入口main方法。想执行X类的main方法怎么办？java X</span><br><span class="line">6. 这里只是测试一下语法，在实际的开发中，对于一个软件来说，一般入口只有1个。</span><br></pre></td></tr></table></figure>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+
+
+
+<div class="related-wrap" id="related-posts"></div>
+
+
+
+
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">starrylsi</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.31.0">Stellar 1.31.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-Java-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">第一章 Java 开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84-windows-%E7%BB%84%E5%90%88%E9%94%AE"><span class="toc-text">常用的 windows 组合键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84-DOS-%E5%91%BD%E4%BB%A4"><span class="toc-text">常用的 DOS 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E7%9A%84%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">通用的文本编辑快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PATH-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">PATH 环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%80%E4%B8%AA-Java-%E7%A8%8B%E5%BA%8F"><span class="toc-text">编写第一个 Java 程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%AC%AC%E4%B8%80%E4%B8%AA-java-%E7%A8%8B%E5%BA%8F"><span class="toc-text">编译第一个 java 程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%AC%AC%E4%B8%80%E4%B8%AA-Java-%E7%A8%8B%E5%BA%8F"><span class="toc-text">运行第一个 Java 程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%8C%E6%8F%A1%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-CLASSPATH"><span class="toc-text">掌握环境变量 CLASSPATH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E6%97%B6%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="toc-text">关于编译时的乱码问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E4%B8%AD%E7%9A%84%E4%B8%89%E7%A7%8D%E6%B3%A8%E9%87%8A"><span class="toc-text">java 中的三种注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#public-class-%E4%B8%8E-class-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">public class 与 class 的区别</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
@@ -84,7 +311,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
   </button>
 </div>
-</div><div class="scripts"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://lovemysi.github.io","author":{"@type":"Person","name":"starrylsi","sameAs":[],"image":"https://pic.starrylsi.top/img/2025/06/27/685e649852896.jpg"},"name":"starrylsi","description":"成为很厉害的程序员","url":"https://lovemysi.github.io"}</script>
+</div><div class="scripts"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"starrylsi","sameAs":[],"image":"https://pic.starrylsi.top/img/2025/06/27/685e649852896.jpg"},"dateCreated":"2025-06-25T17:16:11+08:00","dateModified":"2025-06-27T17:02:00+08:00","datePublished":"2025-06-25T17:16:11+08:00","description":"","headline":"Java开发环境搭建","mainEntityOfPage":{"@type":"WebPage","@id":"https://lovemysi.github.io/2025/06/25/01_Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"},"publisher":{"@type":"Organization","name":"starrylsi","sameAs":[],"image":"https://pic.starrylsi.top/img/2025/06/27/685e649852896.jpg","logo":{"@type":"ImageObject","url":"https://pic.starrylsi.top/img/2025/06/27/685e649852896.jpg"}},"url":"https://lovemysi.github.io/2025/06/25/01_Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/","keywords":"Java","thumbnailUrl":"https://pic.starrylsi.top/img/2025/06/27/685e5b36bb1d5.jpg","image":1}</script>
 
 
 <script type="text/javascript">
