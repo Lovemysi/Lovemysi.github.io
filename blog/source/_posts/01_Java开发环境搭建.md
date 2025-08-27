@@ -1,0 +1,221 @@
+---
+# 基本信息
+title: Java开发环境搭建
+tags: ["Java"]
+categories: [Java全栈, Java基础]
+description: 快速熟悉Java环境的搭建 # excerpt 也可
+author: starrylsi
+type: tech # tech/story
+h1: " "
+cover: https://pic.starrylsi.top/img/2025/06/27/685e5b36bb1d5.jpg
+---
+
+## 第一章 Java 开发环境搭建
+
+### 常用的 windows 组合键
+
+- win + D
+  - 回到桌面
+- win + E
+  - 打开资源管理器
+- win + R
+  - 打开运行窗口
+- win + L
+  - 锁屏
+- alt + tab
+  - 应用之间的切换
+
+### 常用的 DOS 命令
+
+- 打开 DOS 命令窗口
+
+  - win + R，输入 cmd
+  - cmd 是 commond 单词的缩写。
+
+- 怎么在 DOS 命令窗口中完成复制和粘贴？？？？
+
+- 什么是当前路径？假设进入 DOS 命令窗口时显示的是：C:\Users\Administrator>。那么当前路径就是：C:\Users\Administrator
+
+- 常用 DOS 命令：
+
+  - dir：列出当前路径下所有的文件以及目录。
+  - cls：clear screen 清屏。
+  - exit：退出 DOS 命令窗口。
+  - 切换盘符：c: 或者 d: 或者 e:
+  - del：删除一个文件或者多个文件。del Test.java del \*.java
+  - ipconfig 以及 ipconfig /all：查看网卡的相关信息，例如 ip 地址，mac 地址等。
+  - ping 命令：查看两台计算机之间是否可以正常通信
+    - ping 192.168.137.101
+    - ping 192.168.137.101 -t
+    - ping www.baidu.com
+    - ping www.baidu.com -t
+    - 终止 DOS 命令窗口中某个命令的执行：ctrl + c
+  - mkdir：创建目录
+    - mkdir abc，表示在当前目录下新建一个目录：abc
+  - rd：删除目录
+    - rd abc，表示删除当前路径下的 abc 目录
+  - ren：重命名
+    - ren abc xyz，表示将当前路径下的 abc 目录名修改为 xyz
+  - cd 命令：
+    - 作用是：切换目录。change directory
+    - cd 命令的用法：cd 路径
+    - 路径包括：
+      - 相对路径：相对路径一定是相对于当前路径而言的，以当前路径为基准，从当前所在的位置开始找。
+      - 绝对路径：在 windows 当中，路径开始的时候，是以盘符开始的，都是绝对路径。例如：C:\Users\Administrator\xyz\abc\def
+    - cd .. 回到上级目录 （在 windows 系统中两个点.. 代表的是一个上级目录。扩展：其实还有一个路径叫做一个点 . 一个点代表的是当前路径。）
+    - cd / 回到跟目录
+    - 注意：路径在 windows 当中自动补全：使用 tab 键。
+  - 定时关机：
+    - shutdown -s -t 3600 一小时之后自动关机。
+
+- 批处理文件
+
+  - my.bat 文件
+
+  ```bat
+  cd C:\Users\Administrator\xyz\abc\def
+  c:
+  del *.java
+  ```
+
+  作用：切换到 C:\Users\Administrator\xyz\abc\def 目录下，删除这个目录中所有的 java 文件。
+
+### 通用的文本编辑快捷键
+
+ctrl+c 复制
+
+ctrl+v 粘贴
+
+ctrl+x 剪切
+
+ctrl+s 保存
+
+ctrl+z 撤销
+
+ctrl+y 重做
+
+ctrl+a 全选
+
+home 光标回到行首
+
+end 光标回到行尾
+
+ctrl + home 光标回到文章开始
+
+ctrl + end 光标回到文章末尾
+
+shift + home 或 end 选中一行
+
+鼠标双击 （选中一个单词）
+
+ctrl + shift + 右箭头或左箭头 （选中一个单词）
+
+ctrl + f 查找
+
+### PATH 环境变量
+
+- path 环境变量不是 java 的，隶属于 windows 操作系统
+- path 环境变量的作用是什么？
+  - 在 path 中有很多路径，路径和路径之间采用 分号 隔开
+  - 在 DOS 命令窗口中输入一个 DOS 命令之后，windows 会先从当前路径下找这个命令，如果找不到，则会去环境变量 PATH 的路径中查找该命令，找到则执行，找不到，则报错。
+  - PATH 环境变量实际上就是给 windows 操作系统指路的。
+
+### 编写第一个 Java 程序
+
+在硬盘的任何位置，新建一个 java 源文件，起名：HelloWorld.java
+
+```java
+public class HelloWorld {
+    public static void main(String[] args){
+        System.out.println("Hello World!");
+    }
+}
+```
+
+### 编译第一个 java 程序
+
+- 使用 javac 命令来编译。首先确保 javac 命令能用。
+- javac 命令怎么用，语法是什么？
+  - javac java 源文件的路径
+  - javac java 源文件的相对路径
+  - javac java 源文件的绝对路径
+
+### 运行第一个 Java 程序
+
+- 使用 java 命令来运行程序，首先确保 java 命令可以用。
+- java 命令怎么用？语法格式是什么？
+
+  - java 类名
+  - 切记切记切记~！！！！！！！！！ java 命令后面跟的**不是文件路径**。java 命令后面跟的是<font size=5>类名</font>
+
+- 什么是类名？
+  - A.class，类名是 A
+  - HelloWorld.class，类名是 HelloWorld
+  - Test.class，类名是：Test
+- <font color=red>这里先死记硬背，后面就明白了。要使用 java 命令，首先 DOS 命令窗口中的当前路径必须切换到 class 文件所在的位置。</font>
+
+### 掌握环境变量 CLASSPATH
+
+- classpath 环境变量是隶属于 Java 语言的。不是 windows 操作系统的。和 PATH 环境变量完全不同。
+- classpath 环境变量是给 classloader（类加载器）指路的。
+- java A。执行后。先启动 JVM，JVM 启动 classloader，classloader 去硬盘上通过 classpath 找 A.class 文件。找到则执行，找不到则报错。
+- 如果 classpath 没有配置的话，默认从当前路径下找 class 字节码文件。
+- 如果 classpath 配置了，例如配置到桌面上了：C:\Users\Administrator\Desktop，那么 classloader 以后就只会去桌面上找字节码文件了，不再从当前路径下找了。
+- 注意，如果 classpath 配置为：classpath=.;C:\Users\Administrator\Desktop 是什么意思呢？
+  - 先让类加载器从当前路径下找，如果找不到的话，去 C:\Users\Administrator\Desktop 找。
+- 但是对于目前来说，我们还没有必要这样配置。所以目前 classpath 大家是可以不配置的。
+
+### 关于编译时的乱码问题
+
+- 当 java 源文件中有中文时，采用老杜给的 editplus 工具写代码，最后会出现中文乱码问题，为什么？
+  - editplus 默认是简体中文 GBK。
+  - java21 的 javac 编译器采用的是 UTF-8 的编码方式进行编译。
+  - 编码不一致，所以乱码了。
+- 怎么解决？
+  - 第一种方案：
+    - javac -encoding GBK HelloWorld2.java
+  - 第二种方案：
+    - 将 editplus 的字符集修改为 UTF-8
+  - 不管哪一种解决方案，都是让两边的字符编码方式一致。
+
+### java 中的三种注释
+
+```java
+// 单行注释
+// 单行注释
+// 单行注释
+// 单行注释
+```
+
+```java
+/*
+	多行注释
+	多行注释
+*/
+```
+
+```java
+/**
+* javadoc注释，可以给javadoc命令解析提取并生成帮助文档
+* @author dujubin
+* @version 1.0
+* @since 1.0
+*/
+```
+
+使用以下命令可以提取生成帮助文档：
+
+```text
+javadoc -d docs -author -version -encoding utf-8 HelloWorld.java
+```
+
+### public class 与 class 的区别
+
+```text
+1. 一个Java源文件中可以定义多个class
+2. 编译之后，一个class就会对应生成一个class字节码文件
+3. 如果一个类是public的，类名必须和源文件名保持一致。
+4. public的类可以没有。如果有的话，也只能有一个。
+5. 每个类中都可以编写入口main方法。想执行X类的main方法怎么办？java X
+6. 这里只是测试一下语法，在实际的开发中，对于一个软件来说，一般入口只有1个。
+```

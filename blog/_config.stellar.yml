@@ -1,0 +1,59 @@
+open_graph:
+  enable: true
+  twitter_id: # for open_graph meta
+article:
+  type: tech # tech/story
+  auto_cover: true
+  auto_excerpt: 200
+  related_posts:
+    enable: true
+    title: 您可能感兴趣的文章
+menubar:
+  columns: 4 # 一行多少个
+  items: # 可按照自己需求增加，符合以下格式即可
+    - id: post # 页面中高亮的 menu_id
+      theme: "#1BCDFC" # 高亮时的颜色，仅 svg 中 fill="currentColor" 时有效
+      icon: solar:documents-bold-duotone # 支持 svg/img 标签，可以定义在 icons.yml 文件中，也支持外部图片的 URL
+      title: 笔记 # 标题
+      url: / # 跳转链接，支持相对路径和绝对路径
+    - id: project
+      theme: "#FA6400"
+      icon: solar:planet-bold-duotone
+      title: 项目
+      url: /project/
+    - id: social
+      theme: "#F44336"
+      icon: solar:chat-square-like-bold-duotone
+      title: 社交
+      url: /friends/
+logo:
+  subtitle: "无为而无不为 | 出自道德经"
+style:
+  leftbar:
+    background-image: url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.13/image/sidebar-bg1@small.jpg)
+    blur-px: 100px # 模糊半径
+    blur-bg: var(--alpha60) # 模糊颜色
+# 文章搜索
+search:
+  service: local_search # local_search, todo...
+  local_search:
+    field: all # post, page, all
+    path: /search.json # 搜索文件存放位置
+    content: true # 是否搜索内容
+    skip_search: [] # 指定 path 中的内容不被搜索。
+    codeblock: true # 是否搜索代码块（需要content: true)
+skip_search: ["about*", "post/2023*"]
+footer:
+  social:
+    github:
+      icon: '<img src="https://gcore.jsdelivr.net/gh/xaoxuu/assets.xaoxuu.com/placeholder/social/08a41b181ce68.svg"/>'
+      url: https://
+    music:
+      icon: '<img src="https://gcore.jsdelivr.net/gh/xaoxuu/assets.xaoxuu.com/placeholder/social/3845874.svg"/>'
+      url: https://
+    unsplash:
+      icon: '<img src="https://gcore.jsdelivr.net/gh/xaoxuu/assets.xaoxuu.com/placeholder/social/3616429.svg"/>'
+      url: https://
+    comments:
+      icon: '<img src="https://gcore.jsdelivr.net/gh/xaoxuu/assets.xaoxuu.com/placeholder/social/942ebbf1a4b91.svg"/>'
+      url: https://
